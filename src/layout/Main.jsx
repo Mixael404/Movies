@@ -19,21 +19,22 @@ class Main extends React.Component{
     }
 
     componentDidMount(){
-        axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}&type=${this.state.type}`)
+        axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}&type=${this.state.type}`)
             .then((response) => this.setState({data : [...response.data.Search], loading: false}))
+            .catch((err) => this.setState({loading:false, error:true}))
     }
 
 
     updateSearchList = (search, type) => {
         this.setState({loading: true});
-        axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${search}&type=${type}`)
+        axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}&type=${type}`)
             .then((response) => {
                 if(response.data){
                     this.setState({data : [...response.data.Search], loading: false, error: false})
                 } 
             })
             .catch(() => {
-                this.setState({error: true})
+                this.setState({error: true, loading:false})
             })
     }
 
