@@ -19,7 +19,9 @@ nav{
   min-height: calc(100vh - 134px);
   padding: 1.5rem 0;
 }
-
+.toast-container{
+  max-height: 50px !important;
+}
 .search-btn{
   position: absolute;
   top: 0;

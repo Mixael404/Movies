@@ -19,9 +19,9 @@ class Main extends React.Component{
     }
 
     componentDidMount(){
-        axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${this.state.search}&type=${this.state.type}`)
+        axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=One&type=`)
             .then((response) => this.setState({data : [...response.data.Search], loading: false}))
-            .catch((err) => this.setState({loading:false, error:true}))
+            .catch((err) => this.setState({data: [], loading:false, error:true}))
     }
 
 
@@ -34,7 +34,7 @@ class Main extends React.Component{
                 } 
             })
             .catch(() => {
-                this.setState({error: true, loading:false})
+                this.setState({data: [], error: true, loading:false})
             })
     }
 
